@@ -23,6 +23,13 @@ Enemy.prototype.update = function(dt) {
         this.speed = 150 * (Math.floor(Math.random() * 5) + 1);
     }
     
+    if (this.y === (player.y - 13)
+        && this.x > (player.x - 80)
+        && this.x < (player.x + 60)) {
+        player.x = 303;
+        player.y = 405;
+        this.x = -101;
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -63,7 +70,8 @@ Player.prototype.handleInput = function(direction) {
 // Place all enemy objects in an array called allEnemies
 const allEnemies = [new Enemy(60),
                    new Enemy(143),
-                   new Enemy(226)];
+                   new Enemy(226)
+                   ];
 // Place the player object in a variable called player
 const player = new Player();
 
