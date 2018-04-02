@@ -48,13 +48,13 @@ Player.prototype.render = function() {
 };
 
 Player.prototype.handleInput = function(direction) {
-    if (direction === 'left') {
+    if (direction === 'left' && this.y !== -10) {
         this.x === 0 ? this.x = 606 : this.x -= 101;
-    } else if (direction === 'right') {
+    } else if (direction === 'right' && this.y !== -10) {
         this.x === 606 ? this.x = 0 : this.x += 101;
     } else if (direction === 'up' && this.y !== -10) {
         this.y -= 83;
-    } else if (direction === 'down' && this.y !== 405) {
+    } else if (direction === 'down' && this.y !== 405 && this.y !== -10) {
         this.y += 83;
     }
 };
