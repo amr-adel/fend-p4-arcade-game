@@ -31,6 +31,7 @@ Enemy.prototype.update = function(dt) {
         && this.x < (player.x + 60)) {
         freeze(this);
         freeze(player);
+        message(lose);
     }
 };
 
@@ -52,6 +53,7 @@ const Player = function () {
 Player.prototype.update = function() {
     if (this.y === -10) {
         freeze(this);
+        message(win);
     }
 };
 
@@ -103,5 +105,16 @@ function freeze(obj) {
             player.y = 405;
         }
         obj.freeToMove = true;
-    }, 500);
+    }, 750);
+}
+
+function message(state) {
+    state.style.display = 'inline-block';
+    setTimeout(function() {
+        setTimeout(function() {
+            state.classList.remove('zoomOutDown');
+            state.style.display = 'none';
+        }, 750)
+        state.classList.add('zoomOutDown');
+    }, 400)
 }

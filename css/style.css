@@ -1,6 +1,56 @@
 body {
     text-align: center;
+    font-family: 'arial', sans-serif;
     background-image: linear-gradient(to top, #d3cce3, #e9e4f0);
     height: 100vh;
     margin: 0;
+}
+
+.message {
+    font-size: 72px;
+    position: absolute;
+    top: 300px;
+    width: 707px;
+    transform: translateY(-50%);
+    text-transform: uppercase;
+    background-color: rgba(255, 255, 255, .75);
+    padding: 24px 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .1);
+    display: none;
+}
+
+.win {
+    color: #6ab04c;
+}
+
+.lose {
+    color: #eb4d4b;
+}
+
+
+/* "https://daneden.github.io/animate.css/" */
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@keyframes zoomOutDown {
+  40% {
+    opacity: 1;
+    transform: scale3d(0.475, 0.475, 0.475) translate3d(0, -60px, 0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale3d(0.1, 0.1, 0.1) translate3d(0, 2000px, 0);
+    transform-origin: center bottom;
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+  }
+}
+
+.zoomOutDown {
+  animation-name: zoomOutDown;
 }
