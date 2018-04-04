@@ -2,6 +2,7 @@
 const Enemy = function(y) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
+    this.freeToMove = true;
     this.x = -101;
     this.y = y;
     this.speed = 150 * (Math.floor(Math.random() * 5) + 1);
@@ -16,19 +17,20 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    this.x += dt * this.speed;
+    if (this.freeToMove) {
+        this.x += dt * this.speed;
+    }
     
     if (this.x > 808) {
         this.x = -101;
-        this.speed = 150 * (Math.floor(Math.random() * 5) + 1);
+        this.speed = 150 * (Math.floor(Math.random() * 5) + 1);;
     }
     
     if (this.y === (player.y - 13)
         && this.x > (player.x - 80)
         && this.x < (player.x + 60)) {
-        player.x = 303;
-        player.y = 405;
-        this.x = -101;
+        freeze(this);
+        freeze(player);
     }
 };
 
@@ -43,11 +45,14 @@ Enemy.prototype.render = function() {
 const Player = function () {
     this.x = 303;
     this.y = 405;
+    this.freeToMove = true;
     this.sprite = 'images/char-boy.png';
 }
 
 Player.prototype.update = function() {
-
+    if (this.y === -10) {
+        freeze(this);
+    }
 };
 
 Player.prototype.render = function() {
@@ -55,13 +60,13 @@ Player.prototype.render = function() {
 };
 
 Player.prototype.handleInput = function(direction) {
-    if (direction === 'left' && this.y !== -10) {
+    if (direction === 'left' && this.freeToMove) {
         this.x === 0 ? this.x = 606 : this.x -= 101;
-    } else if (direction === 'right' && this.y !== -10) {
+    } else if (direction === 'right' && this.freeToMove) {
         this.x === 606 ? this.x = 0 : this.x += 101;
-    } else if (direction === 'up' && this.y !== -10) {
+    } else if (direction === 'up' && this.freeToMove) {
         this.y -= 83;
-    } else if (direction === 'down' && this.y !== 405 && this.y !== -10) {
+    } else if (direction === 'down' && this.y !== 405 && this.freeToMove) {
         this.y += 83;
     }
 };
@@ -88,3 +93,15 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+
+function freeze(obj) {
+    obj.freeToMove = false;
+    setTimeout(function () {
+        if (obj === player) {
+            player.x = 303;
+            player.y = 405;
+        }
+        obj.freeToMove = true;
+    }, 500);
+}
