@@ -1,6 +1,15 @@
-frontend-nanodegree-arcade-game
-===============================
+# Classic Arcade Game Clone
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+This is my entry for project 4 (*Classic Arcade Game Clone*) from Udacity's  [Front-End Nanodegree](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001) program.
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+[![Classic Arcade Game Clone](/images/demo.jpg "FRUITY MATCH!")](https://amr-adel.github.io/fend-p4-arcade-game/)
+
+### To win the game
+- Use your keyborad arrow keys to move your character.
+- Guide your character to reach the other side ( The top most row ).
+- Avoid collision with bugs.
+- You lose if your charcter became too colse to any bug, and return to starting position.
+
+---
+
+### Try it now [HERE](https://amr-adel.github.io/fend-p4-arcade-game/)
